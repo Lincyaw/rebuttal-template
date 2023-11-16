@@ -17,15 +17,42 @@
 \usepackage{setspace}
 \usepackage{parskip}
 % Define custom colors
-\definecolor{customred}{HTML}{C0606A}
-\definecolor{customblue}{HTML}{80A1C1}
+
 \definecolor{lightgreen}{HTML}{EDF5F5}
 \definecolor{deepgreen}{HTML}{8FBCBA}
 
+\definecolor{lightpurple}{HTML}{F2EDF5}
+\definecolor{deepurple}{HTML}{A88FBD}
+
+\definecolor{deepbrown}{HTML}{BDA091}
+\definecolor{lightbrown}{HTML}{F5F2F0}
+
+
+\definecolor{purple}{HTML}{979DE4}
+\definecolor{red}{HTML}{E39494}
+\definecolor{green}{HTML}{94E3AA}
+\definecolor{yellow}{HTML}{E3D294}
+\definecolor{deepred}{HTML}{8F4343}
+\definecolor{deepblue}{HTML}{4C508F}
+
+\definecolor{customred}{HTML}{C0606A}
+\definecolor{customblue}{HTML}{80A1C1}
+
+
+\definecolor{xxblue}{HTML}{E1EBF5}
+\definecolor{xxred}{HTML}{F5D7D5}
+\definecolor{xxgreen}{HTML}{EDF5F4}
+\definecolor{xxyellow}{HTML}{F5E9D5}
+\definecolor{xxngreen}{HTML}{DCF5E6}
+
+
+
+
+
 \definecolor{graybg}{gray}{0.95} % Light gray background
 
-\newcommand{\commentlabel}[1]{\colorbox{customred}{\textbf{\textcolor{white}{#1}}}}
-\newcommand{\responselabel}[1]{\colorbox{customblue}{\textbf{\textcolor{white}{#1}}}}
+\newcommand{\commentlabel}[1]{\colorbox{deepred}{\textbf{\textcolor{white}{#1}}}}
+\newcommand{\responselabel}[1]{\colorbox{deepblue}{\textbf{\textcolor{white}{#1}}}}
 
 % Counter for comments
 \newcounter{CommentCounter}
@@ -44,8 +71,8 @@
 
 % Environment for manuscript changes
 \newmdenv[
-    backgroundcolor=gray!20, % 灰色背景
-    linecolor=gray!50, % 左边框颜色
+    backgroundcolor=lightbrown, % 灰色背景
+    linecolor=deepbrown, % 左边框颜色
     leftline=true, % 启用左边框
     rightline=false, % 禁用右边框
     topline=false, % 禁用顶部边框
