@@ -1,2 +1,3 @@
 # rebuttal-template
-template for rebuttal
+
+Please use XeLaTex as the compiler.

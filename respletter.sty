@@ -1,0 +1,102 @@
+% Contents of respletter.sty
+\ProvidesPackage{respletter}
+
+\usepackage{mdframed} % For creating framed environments
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+% \usepackage{mathptmx} % Times New Roman-like font
+\usepackage{fontspec}
+\setmainfont{Libertinus Serif}
+% \setsansfont{Libertinus Sans}
+% \setmonofont{Libertinus Mono}
+\usepackage{amsmath,amsfonts,amssymb}
+
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{setspace}
+\usepackage{parskip}
+% Define custom colors
+\definecolor{customred}{HTML}{C0606A}
+\definecolor{customblue}{HTML}{80A1C1}
+\definecolor{lightgreen}{HTML}{EDF5F5}
+\definecolor{deepgreen}{HTML}{8FBCBA}
+
+\definecolor{graybg}{gray}{0.95} % Light gray background
+
+\newcommand{\commentlabel}[1]{\colorbox{customred}{\textbf{\textcolor{white}{#1}}}}
+\newcommand{\responselabel}[1]{\colorbox{customblue}{\textbf{\textcolor{white}{#1}}}}
+
+% Counter for comments
+\newcounter{CommentCounter}
+
+% Commands for reviewer comments, responses
+\newcommand{\reviewercomment}[1]{%
+    \refstepcounter{CommentCounter}%
+    \noindent\commentlabel{Comment \theCommentCounter:} #1\par}
+
+% \newcommand{\response}[1]{%
+%     \noindent\responselabel{Response:} #1\par}
+
+\newenvironment{response}%
+    {\par\noindent\responselabel{Response:} \ignorespaces}%
+    {\par\addvspace{\baselineskip}}
+
+% Environment for manuscript changes
+\newmdenv[
+    backgroundcolor=gray!20, % 灰色背景
+    linecolor=gray!50, % 左边框颜色
+    leftline=true, % 启用左边框
+    rightline=false, % 禁用右边框
+    topline=false, % 禁用顶部边框
+    bottomline=false, % 禁用底部边框
+    linewidth=2pt, % 边框宽度
+    innerleftmargin=10pt,
+    innerrightmargin=10pt,
+    innertopmargin=10pt,
+    innerbottommargin=10pt
+]{changemargin}
+
+% 定义带有浅蓝色背景和加深左边框的环境
+\newmdenv[
+    backgroundcolor=lightgreen, % 浅蓝色背景
+    linecolor=deepgreen, % 左边框颜色
+    leftline=true, % 启用左边框
+    rightline=false, % 禁用右边框
+    topline=false, % 禁用顶部边框
+    bottomline=false, % 禁用底部边框
+    linewidth=2pt, % 边框宽度
+    innerleftmargin=4pt,
+    innerrightmargin=4pt,
+    innertopmargin=10pt,
+    innerbottommargin=4pt
+]{changemarginblue}
+
+\newcommand{\manuscriptchange}[2]{%
+    \begin{changemargin}
+    \textbf{\underline{#1}}\\
+    #2
+    \end{changemargin}}
+
+
+\newcounter{changelevel}
+\newenvironment{manuscriptchangeenv}[1]%
+    {%
+     \ifnum\value{changelevel}=0%
+        \begin{changemarginblue}%
+     \else%
+        \begin{changemargin}%
+     \fi%
+     \stepcounter{changelevel}%
+     \textbf{\underline{#1}}\\%
+     \ignorespaces%
+    }%
+    {%
+     \addtocounter{changelevel}{-1}%
+     \ifnum\value{changelevel}=0%
+        \end{changemarginblue}%
+     \else%
+        \end{changemargin}%
+     \fi%
+     \par\addvspace{\baselineskip}%
+    }
