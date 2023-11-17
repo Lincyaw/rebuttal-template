@@ -1,6 +1,5 @@
 % Contents of respletter.sty
 \ProvidesPackage{respletter}
-
 \usepackage{mdframed} % For creating framed environments
 \usepackage{geometry}
 \geometry{a4paper, margin=1in}
@@ -44,26 +43,7 @@
 \definecolor{xxgreen}{HTML}{EDF5F4}
 \definecolor{xxyellow}{HTML}{F5E9D5}
 \definecolor{xxngreen}{HTML}{DCF5E6}
-
-
-
-
-
 \definecolor{graybg}{gray}{0.95} % Light gray background
-
-\newcommand{\commentlabel}[1]{\colorbox{deepred}{\textbf{\textcolor{white}{#1}}}}
-\newcommand{\responselabel}[1]{\colorbox{deepblue}{\textbf{\textcolor{white}{#1}}}}
-
-% Counter for comments
-\newcounter{CommentCounter}
-
-% Commands for reviewer comments, responses
-\newcommand{\reviewercomment}[1]{%
-    \refstepcounter{CommentCounter}%
-    \noindent\commentlabel{Comment \theCommentCounter:} #1\par}
-
-% \newcommand{\response}[1]{%
-%     \noindent\responselabel{Response:} #1\par}
 
 \newenvironment{response}%
     {\par\noindent\responselabel{Response:} \ignorespaces}%
@@ -99,13 +79,6 @@
     innerbottommargin=4pt
 ]{changemarginblue}
 
-\newcommand{\manuscriptchange}[2]{%
-    \begin{changemargin}
-    \textbf{\underline{#1}}\\
-    #2
-    \end{changemargin}}
-
-
 \newcounter{changelevel}
 \newenvironment{manuscriptchangeenv}[1]%
     {%
@@ -127,3 +100,22 @@
      \fi%
      \par\addvspace{\baselineskip}%
     }
+
+\newcommand{\commentlabel}[1]{\colorbox{deepred}{\textbf{\textcolor{white}{#1}}}}
+\newcommand{\responselabel}[1]{\colorbox{deepblue}{\textbf{\textcolor{white}{#1}}}}
+
+\newcounter{CommentCounter}
+\newcommand{\reviewercomment}[1]{%
+    \refstepcounter{CommentCounter}%
+    \noindent\commentlabel{Comment \theCommentCounter:} #1\par
+    \addcontentsline{toc}{subsection}{Comment \theCommentCounter}
+}
+
+
+\newcommand{\manuscriptchange}[2]{%
+    \begin{changemargin}
+    \textbf{\underline{#1}}\\
+    #2
+    \end{changemargin}}
+
+
