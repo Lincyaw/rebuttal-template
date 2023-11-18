@@ -104,14 +104,23 @@
 \newcommand{\commentlabel}[1]{\colorbox{deepred}{\textbf{\textcolor{white}{#1}}}}
 \newcommand{\responselabel}[1]{\colorbox{deepblue}{\textbf{\textcolor{white}{#1}}}}
 
+
+
+\newcounter{reviewerSection}
 \newcounter{CommentCounter}
-\counterwithin{CommentCounter}{section}
+\counterwithin{CommentCounter}{reviewerSection}
+% \renewcommand{\thereviewerSection}{\Alph{reviewerSection}}
+\newcommand{\reviewerSection}[1]{%
+    \renewcommand{\thereviewerSection}{\Alph{reviewerSection}}
+    \refstepcounter{reviewerSection} % 增加 reviewerSection 计数器
+    \section{#1} % 创建一个无编号的section
+}
+
 \newcommand{\reviewercomment}[1]{
     \refstepcounter{CommentCounter}
     \noindent\commentlabel{Comment \theCommentCounter:} #1\par
     \addcontentsline{toc}{subsection}{Comment \theCommentCounter}
 }
-
 
 \newcommand{\manuscriptchange}[2]{%
     \begin{changemargin}
