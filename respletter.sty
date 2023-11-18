@@ -9,7 +9,7 @@
 % \setsansfont{Libertinus Sans}
 % \setmonofont{Libertinus Mono}
 \usepackage{amsmath,amsfonts,amssymb}
-
+\usepackage{chngcntr}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -105,8 +105,9 @@
 \newcommand{\responselabel}[1]{\colorbox{deepblue}{\textbf{\textcolor{white}{#1}}}}
 
 \newcounter{CommentCounter}
-\newcommand{\reviewercomment}[1]{%
-    \refstepcounter{CommentCounter}%
+\counterwithin{CommentCounter}{section}
+\newcommand{\reviewercomment}[1]{
+    \refstepcounter{CommentCounter}
     \noindent\commentlabel{Comment \theCommentCounter:} #1\par
     \addcontentsline{toc}{subsection}{Comment \theCommentCounter}
 }
